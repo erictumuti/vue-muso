@@ -11,9 +11,6 @@
 				  <router-link class="btn" :to="{ name: 'Signup' }">Sign up</router-link>
 			  <router-link class="btn" :to="{ name: 'Login' }">Login</router-link>
 			  </div>
-
-
-
 		  </div>
 	  </nav>
   </div>
