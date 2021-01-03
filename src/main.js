@@ -5,4 +5,14 @@ import router from './router'
 //global styles
 import './assets/main.css'
 
-createApp(App).use(router).mount('#app')
+// not redirect to login if user is logged in
+
+import { projectAuth } from '@/firebase/config'
+
+let app
+
+projectAuth.onAuthStateChanged(() => {
+	if(!app) {
+		app = createApp(App).use(router).mount('#app')
+	}
+})
