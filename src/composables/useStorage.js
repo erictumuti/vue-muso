@@ -9,6 +9,8 @@ const useStorage = () => {
 	const url = ref(null)
 	const filePath = ref(null)
 
+	// upload image
+
 	const uploadImage = async (file) => {
 		filePath.value = `covers/${user.value.uid}/${file.name}`
 		const storageRef = projectStorage.ref(filePath.value)
@@ -21,8 +23,20 @@ const useStorage = () => {
 			error.value = err.message
 		}
 	}
+	// delete image
+	const deleteImage = async (path) => {
+		const storageRef = projectStorage.ref(path)
 
-	return { url, error, filePath, uploadImage }
+		try {
+		  await storageRef.delete()
+		} catch (err) {
+		  console.log(err.message)
+		  error.value = err
+		}
+	  }
+
+
+	return { uploadImage, deleteImage, url, filePath, error }
 }
 
 export default useStorage
