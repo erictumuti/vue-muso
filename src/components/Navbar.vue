@@ -6,6 +6,8 @@
 		  <div class="links">
 			  <div v-if="user">
 				  <router-link :to="{ name: 'CreatePlaylist' }">Create playlist</router-link>
+				  <router-link :to="{ name: 'UserPlaylists' }">My playlist</router-link>
+				  <span> Hi {{ user.displayName }}</span>
 				  <button @click="handleClick">logout</button>
 			  </div>
 			  <div v-else>
@@ -67,5 +69,10 @@ export default {
   }
   nav img {
 	  max-height: 60px;
+  }
+  span {
+	  padding: 0 10px;
+	  font-weight: bold;
+	  font-size: 14px;
   }
 </style>
